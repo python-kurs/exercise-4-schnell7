@@ -62,8 +62,7 @@ def create_climate_diagram(...):
     # Put meaningful labels on each Y-axis and give your diagram the title from the passed arguments:
     ax2.
     ax1.
-
-	plt.title(...)
+    plt.title(...)
 
     ax1.set_ylim((temp_min,temp_max))
     ax2.set_ylim((prec_min,prec_max))
