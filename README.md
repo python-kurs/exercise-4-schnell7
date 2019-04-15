@@ -1,4 +1,4 @@
-# Exercise 4
+# Exercise 4 (10P)
 
 In the data folder, you can find the recent daily station observations from the DWD for Garmisch-Partenkirchen and the Zugspitze. The data was downloaded from the public DWD opendata-server at:
 
