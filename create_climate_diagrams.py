@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 # Import both data tables into python using pandas. Set the index column to "MESS_DATUM" and parse the column values as dates. [1P]
 garmisch  = 
@@ -10,12 +11,8 @@ garmisch  =
 zugspitze = 
 
 # Resample the temperature data to monthly averages (" TMK") and store them in simple lists: [1P]
-garmisch_temp  = list(...)
-zugspitze_temp = list(...)
-
-# Resample the precipitation data to monthly sums (" RSK") and store them in simple lists: [1P]
-garmisch_prec  =  list(...)
-zugspitze_prec =  list(...)
+garmisch_agg  = 
+zugspitze_agg = 
 
 # Define a plotting function that draws a simple climate diagram
 # Add the arguments as mentioned in the docstring below [1P]
@@ -26,21 +23,23 @@ def create_climate_diagram(...):
     
     Parameters
     ----------
-    temp : A list with 12 numbers, one for each month
-        The temperature values
-    prec : A list with 12 numbers, one for each month
-        The precipitation values
-    title: String
+    df : pd.DataFrame
+        Dataframe with values to plot from
+    temp_col : str
+        Name of temperature column
+    prec_col : str
+        Name of precipitation column
+    title : String
         The title for the figure
-    filename: String
+    filename : String
         The name of the output figure
-    temp_min: Number
+    temp_min : Number
         The minimum temperature value to display
-    temp_max: Number
+    temp_max : Number
         The maximum temperature value to display
-    prec_min: Number
+    prec_min : Number
         The minimum precipitation value to display
-    prec_max: Number
+    prec_max : Number
         The maximum precipitation value to display
 
     Returns
@@ -63,15 +62,16 @@ def create_climate_diagram(...):
     ax2.
     ax1.
     plt.title(...)
-
-    ax1.set_ylim((temp_min,temp_max))
-    ax2.set_ylim((prec_min,prec_max))
-
-    ax2.set_xticks(range(12))
-    ax2.set_xticklabels(("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"))
     
+    # Format the x-axis labels with month shortnames: [1P]
+    # Construct the locator and formatter
+    locator = 
+    formatter = 
+    # Apply them to the axis
+    ax2.
+    
+
     # Save the figure as png image in the "output" folder with the given filename. [1P]
-    plt.
     
     return fig
 
