@@ -55,7 +55,8 @@ def create_climate_diagram(...):
     ax1 = ax2.twinx()
 
     # Draw temperature values as a red line and precipitation values as blue bars: [1P]
-    # Hint: Check out the matplotlib documentation how to plot barcharts.
+    # Hint: Check out the matplotlib documentation how to plot barcharts. Try to directly set the correct
+    #       x-axis labels (month shortnames).
     ax2.bar(...)
     ax1.plot(...)
     
