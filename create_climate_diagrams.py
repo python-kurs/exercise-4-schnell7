@@ -60,20 +60,25 @@ def create_climate_diagram(df,
     ax2 = fig.add_subplot(111)
     ax1 = ax2.twinx()
     
-    df_agg = df.loc[:,[temp_col,prec_col]].resample("1M").agg({temp_col:"mean",prec_col:"sum"})
     
+    df_agg = df.resample("1M").agg({temp_col:"mean", prec_col:"sum"})
+
     # Draw temperature values as a red line and precipitation values as blue bars: [1P]
     # Hint: Check out the matplotlib documentation how to plot barcharts. Try to directly set the correct
     #       x-axis labels (month shortnames).
-    ax2.bar(df_agg.index, df_agg[prec_col], color = "blue", width = 10, label = "regen")
-    ax1.plot(df_agg[temp_col], color= "red", label = "Temperature")
+    ax2.bar(df_agg.index, df_agg[prec_col], color = "blue", width = 20, align = 'center')
+    ax1.plot(df_agg[temp_col], color= "red")
     # Set appropiate limits to each y-axis using the function arguments: [1P]
     ax2.set_ylim(prec_range)
     ax1.set_ylim(temp_range)
     #monate auf der xachse
     ax1.xaxis.set_major_locator(mdates.MonthLocator())
     ax1.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
-    plt.xticks(rotation=45)
+    
+    #plt.xticks(rotation=45)
+    fig.autofmt_xdate()
+    #ax1.set_xlim(df_agg.index[0],df_agg.index[-1] )
+    
     # Set appropiate labels to each y-axis: [1P]
     ax2.set_ylabel("Precipitation [mm]")
     ax1.set_ylabel("Temperature [°C]")
@@ -83,9 +88,9 @@ def create_climate_diagram(df,
     
 
     # Save the figure as png image in the "output" folder with the given filename. [1P]
-    
+    plt.savefig(output_filename + ".png")
     return fig
 #%%
 # Use this function to draw a climate diagram for 2018 for both stations and save the result: [1P]
-create_climate_diagram(garmisch, " TMK", " RSK", "klimadiagram", "huhu"  )
-#create_climate_diagram(...)
+create_climate_diagram(garmisch, " TMK", " RSK", "klimadiagram", "garmisch"  )
+create_climate_diagram(zugspitze, " TMK", " RSK", "klimadiagram", "zugspitze")
