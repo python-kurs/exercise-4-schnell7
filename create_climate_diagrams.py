@@ -61,7 +61,8 @@ def create_climate_diagram(df,
     ax1 = ax2.twinx()
     
     
-    df_agg = df.resample("1M").agg({temp_col:"mean", prec_col:"sum"})
+    df_agg = df.resample(rule = "1MS", ).agg({temp_col:"mean", prec_col:"sum"})
+    print(df_agg.index)
 
     # Draw temperature values as a red line and precipitation values as blue bars: [1P]
     # Hint: Check out the matplotlib documentation how to plot barcharts. Try to directly set the correct
@@ -74,6 +75,7 @@ def create_climate_diagram(df,
     #monate auf der xachse
     ax1.xaxis.set_major_locator(mdates.MonthLocator())
     ax1.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
+    
     
     #plt.xticks(rotation=45)
     fig.autofmt_xdate()
